@@ -1,0 +1,11 @@
+services:
+  terraform:
+    build: .
+    volumes:
+    - /home/nitz/projects/ug_deployment/aws-eks:/app
+    - ~/.config/gcloud/application_default_credentials.json:/tmp/application_default_credentials.json
+    - ~/.aws:/root/.aws:ro
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /tmp/application_default_credentials.json
+    working_dir: /app/environments/prod
+
